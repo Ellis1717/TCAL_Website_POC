@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TCAL • Team Consultation for Accountable Leadership</title>
+  <meta name="description" content="TCAL provides an adaptable framework for consistent leadership—helping organizations clarify expectations, drive accountability, and meet service targets." />
+  <meta property="og:title" content="TCAL • Team Consultation for Accountable Leadership" />
+  <meta property="og:description" content="Adaptable framework for consistent leadership. Team consultations, individual coaching, and full‑day workshops." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/" />
+  <meta name="theme-color" content="#0f766e" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='24' fill='%230f766e'/%3E%3Cpath d='M30 66h68M30 88h52M30 45h32' stroke='%23fff' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <style>
+    :root{
+      --bg: #0b1320;
+      --card:#0f172a;
+      --ink:#0b0f1a;
+      --text:#0b0f1a;
+      --brand:#0f766e; /* teal-700 */
+      --brand-600:#0ea5a4; /* teal-600 */
+      --brand-50:#ecfeff; /* cyan-50 */
+      --muted:#6b7280;
+      --ring:rgba(14,165,164,.3);
+    }
+    html{scroll-behavior:smooth}
+    *{box-sizing:border-box}
+    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:#0f172a;background:#f8fafc}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin-inline:auto;padding:0 1.25rem}
+    header.nav{position:sticky;top:0;background:#ffffffcc;backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #e5e7eb;z-index:50}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0}
+    .logo{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.2px}
+    .logo svg{width:28px;height:28px}
+    .nav a{font-weight:600;color:#0f172a;padding:.5rem .75rem;border-radius:.6rem}
+    .nav a.cta{background:var(--brand);color:#fff}
+    .nav a.cta:hover{background:#0e7c74}
+    .navlinks{display:flex;gap:.25rem;align-items:center}
+    /* hero */
+    .hero{padding:5rem 0 2.25rem;background:linear-gradient(180deg,#ffffff 0,#f0fdfa 100%);border-bottom:1px solid #e5e7eb}
+    .hero h1{font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.15;margin:0 0 .75rem}
+    .hero p{font-size:1.125rem;color:#334155;max-width:50ch}
+    .badges{display:flex;gap:.75rem;flex-wrap:wrap;margin:1rem 0 0}
+    .badge{background:#fff;border:1px solid #e5e7eb;padding:.4rem .65rem;border-radius:999px;color:#0f172a;font-weight:600}
+    /* cards */
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+    .card{grid-column:span 6;background:#fff;border:1px solid #e5e7eb;border-radius:1rem;padding:1.1rem}
+    .card h3{margin-top:0;margin-bottom:.25rem}
+    .card p{margin:.25rem 0}
+    .card .muted{color:#64748b}
+    @media (max-width:860px){.card{grid-column:span 12}}
+    /* section */
+    section{padding:2.25rem 0}
+    section h2{margin:0 0 .75rem;font-size:1.6rem}
+    .kicker{display:inline-block;font-size:.9rem;font-weight:700;color:var(--brand);letter-spacing:.04em}
+    /* faq */
+    details{border:1px solid #e5e7eb;background:#fff;border-radius:.8rem;padding:.9rem 1rem}
+    details+details{margin-top:.75rem}
+    details[open]{box-shadow:0 0 0 3px var(--ring)}
+    summary{cursor:pointer;font-weight:700}
+    summary::-webkit-details-marker{display:none}
+    /* table */
+    table{width:100%;border-collapse:separate;border-spacing:0;margin:0;border-radius:.75rem;overflow:hidden;border:1px solid #e5e7eb;background:#fff}
+    th,td{padding:.75rem .9rem;text-align:left;border-bottom:1px solid #e5e7eb}
+    th{background:#f8fafc;font-size:.95rem}
+    tr:last-child td{border-bottom:0}
+    /* contact */
+    form{background:#fff;border:1px solid #e5e7eb;border-radius:1rem;padding:1rem}
+    .fields{display:grid;grid-template-columns:repeat(6,1fr);gap:.75rem}
+    .fields .col-3{grid-column:span 3}
+    .fields .col-6{grid-column:span 6}
+    @media (max-width:860px){.fields .col-3,.fields .col-6{grid-column:span 6}}
+    label{display:block;font-weight:600;margin:.25rem 0}
+    input,textarea{width:100%;padding:.65rem .75rem;border:1px solid #cbd5e1;border-radius:.65rem;font:inherit}
+    textarea{min-height:140px;resize:vertical}
+    input:focus,textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px var(--ring)}
+    .help{font-size:.85rem;color:#64748b}
+    .btn{appearance:none;border:0;border-radius:.75rem;padding:.8rem 1rem;background:var(--brand);color:#fff;font-weight:700;cursor:pointer}
+    .btn:hover{background:#0e7c74}
+    .note{font-size:.9rem;color:#475569}
+    footer{padding:2rem 0;border-top:1px solid #e5e7eb;background:#fff;color:#334155}
+    .footgrid{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center}
+    @media (max-width:700px){.footgrid{grid-template-columns:1fr}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "TCAL – Team Consultation for Accountable Leadership",
+    "description": "Consultations and workshops providing an adaptable framework for consistent leadership and accountability to vision, values, and targets.",
+    "areaServed": "Canada",
+    "telephone": "+1-705-868-9635",
+    "email": "tcalorggrowth@gmail.com",
+    "openingHours": "Mo-Fr 09:00-17:00",
+    "priceRange": "$$",
+    "sameAs": [],
+    "url": "https://example.com"
+  }
+  </script>
+</head>
+<body>
+  <header class="nav" aria-label="Primary">
+    <div class="container nav-inner">
+      <a class="logo" href="#top" aria-label="TCAL home">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="18" rx="4" stroke="currentColor" stroke-width="2"/><path d="M7 10h10M7 14h8M7 6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>TCAL</span>
+      </a>
+      <nav class="navlinks">
+        <a href="#about">About</a>
+        <a href="#offerings">Offerings</a>
+        <a href="#faqs">FAQs</a>
+        <a href="#rates">Rates</a>
+        <a href="#contact" class="cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <span class="kicker">Team Consultation for Accountable Leadership</span>
+        <h1>Providing an adaptable framework for consistent leadership within your organization.</h1>
+        <p>Your organization will confirm and clarify its expectations of all staff and set a process for accountability to vision, values, and targets.</p>
+        <div class="badges" aria-label="Highlights">
+          <span class="badge">Team Consultations</span>
+          <span class="badge">Individual Coaching</span>
+          <span class="badge">Full‑Day Workshops</span>
+          <a class="badge" href="#contact">Book a consult</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2>About Me</h2>
+        <div class="grid">
+          <article class="card" style="grid-column:span 7">
+            <p>Having recently retired from a career in the social services, I am a social worker with formal education and experience in executive leadership. I have a keen interest in systems theory and understanding the interplay of people within systems.</p>
+            <p>In my current work I am motivated by the belief that organizations with an accountability framework are more likely to hit their bottom lines in productivity. The leaders in the organization are committed to the framework and this results in higher staff retention, attainment of service targets and valuable succession planning.</p>
+          </article>
+          <aside class="card" style="grid-column:span 5">
+            <h3>Testimonials</h3>
+            <p class="muted">Recent feedback from sessions</p>
+            <blockquote>
+              <p>“Tami’s Accountable Leadership session was both engaging and deeply relevant. She created a safe space for open discussion while challenging our senior team to reflect on our own leadership accountability. The session sparked meaningful conversations that continue to influence our approach to supervision and team culture.”</p>
+              <footer>— <strong>Jaime Beechey</strong>, Director of Community and Social Services</footer>
+            </blockquote>
+            <blockquote>
+              <p>“Tami brings a practical, easily digestible approach to leadership development. During our session, members of my senior team were engaged and spoke about how they could easily walk away from the session with a sense of strategic next steps for their ongoing leadership development.”</p>
+              <footer>— <strong>Erin Lee Marcotte</strong>, Executive Director, Family and Children’s Services of Lanark, Leeds and Grenville</footer>
+            </blockquote>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="offerings">
+      <div class="container">
+        <h2>What I Offer</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Team Consultations</h3>
+            <p class="muted">For senior leaders, middle managers, and prospective leaders.</p>
+            <p>Clarify expectations, align to vision and values, and set a practical accountability cadence that your leaders will actively model.</p>
+          </div>
+          <div class="card">
+            <h3>Individual Coaching</h3>
+            <p class="muted">Targeted leadership development.</p>
+            <p>Hands‑on coaching to translate the framework into personal leadership practices and measurable outcomes.</p>
+          </div>
+          <div class="card">
+            <h3>Full‑Day Workshops</h3>
+            <p class="muted">Immersive and implementation‑focused.</p>
+            <p>Combine theory, narrative examples, and interactive discussions to build your team’s plan for consistent implementation.</p>
+          </div>
+          <div class="card">
+            <h3>Delivery Options</h3>
+            <p>In‑person, virtual, or hybrid. While in‑person is ideal, virtual sessions with agreed guidelines for engagement are effective.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faqs">
+      <div class="container">
+        <h2>FAQs</h2>
+        <details>
+          <summary>Why does my organization need an accountable leadership framework?</summary>
+          <div>
+            <p>It is said that staff do not leave companies, they leave managers. The framework presented in these consultations distills adaptable leadership theory into three primary components that, in experience and in the literature, are key to organizational success.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Who should attend the session(s)?</summary>
+          <div>
+            <p>Sessions can be specific to senior leaders, middle managers, and prospective leaders on track for promotion. It’s recommended the senior leader or leadership team first engage to ensure the framework is adopted and actively modeled.</p>
+          </div>
+        </details>
+        <details>
+          <summary>What will my organization gain?</summary>
+          <div>
+            <p>Applicable, hands‑on information that leads to a team plan for consistent implementation. Your organization will define goals and targets to measure impact as the framework is implemented.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Where will the session(s) take place?</summary>
+          <div>
+            <p>In person, virtual, or hybrid. In‑person is most effective, but virtual sessions with clear engagement guidelines are also effective.</p>
+          </div>
+        </details>
+        <details>
+          <summary>How will the information be presented?</summary>
+          <div>
+            <p>A blend of theoretical presentation, narrative examples, and interactive discussions—prioritizing your organization’s real scenarios to apply the material.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="rates">
+      <div class="container">
+        <h2>Rates</h2>
+        <table aria-describedby="rates-note">
+          <thead>
+            <tr><th>Service</th><th>Rate</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Team consultations</td><td>$250 / hour</td></tr>
+            <tr><td>Individual coaching sessions</td><td>$150 / hour</td></tr>
+            <tr><td>Full‑day workshop</td><td>$1,200 / day</td></tr>
+            <tr><td>Travel & accommodation</td><td>Additional, at cost</td></tr>
+          </tbody>
+        </table>
+        <p id="rates-note" class="note">All pricing in CAD. Request a custom quote for multi‑session packages.</p>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title">Contact</h2>
+        <p class="note">Please allow up to 24 business hours for a response to calls, texts, or emails.<br />
+        Business Hours: <strong>9:00 a.m. – 5:00 p.m., Monday–Friday</strong></p>
+        <div class="grid">
+          <div class="card" style="grid-column:span 6">
+            <p><strong>Email:</strong> <a href="mailto:tcalorggrowth@gmail.com">tcalorggrowth@gmail.com</a><br />
+               <strong>Phone:</strong> <a href="tel:+17058689635">(705) 868‑9635</a></p>
+            <form id="contact-form" novalidate>
+              <!-- If you prefer a simple no‑backend setup, replace FORM_ENDPOINT with your Formspree (or similar) endpoint. -->
+              <!-- Example: const FORM_ENDPOINT = 'https://formspree.io/f/xxxxxx' -->
+              <div class="fields">
+                <div class="col-3">
+                  <label for="first-name">First name <span aria-hidden="true">*</span></label>
+                  <input id="first-name" name="firstName" autocomplete="given-name" required />
+                </div>
+                <div class="col-3">
+                  <label for="last-name">Last name <span aria-hidden="true">*</span></label>
+                  <input id="last-name" name="lastName" autocomplete="family-name" required />
+                </div>
+                <div class="col-6">
+                  <label for="company">Company name (optional)</label>
+                  <input id="company" name="company" autocomplete="organization" />
+                </div>
+                <div class="col-6">
+                  <label for="email">Email <span aria-hidden="true">*</span></label>
+                  <input id="email" type="email" name="email" autocomplete="email" required />
+                </div>
+                <div class="col-6">
+                  <label for="message">Message <span aria-hidden="true">*</span></label>
+                  <textarea id="message" name="message" required></textarea>
+                </div>
+              </div>
+              <p class="help" id="form-help">Required fields are marked with an asterisk (*).</p>
+              <button class="btn" type="submit">Send</button>
+              <p class="help" id="form-status" role="status" aria-live="polite"></p>
+              <noscript>
+                <p class="help">JavaScript is disabled. Please email <a href="mailto:tcalorggrowth@gmail.com">tcalorggrowth@gmail.com</a> with your details.</p>
+              </noscript>
+            </form>
+          </div>
+          <aside class="card" style="grid-column:span 6">
+            <h3>What happens next?</h3>
+            <p>We’ll reply within one business day to schedule a brief consultation and confirm fit, scope, and timing.</p>
+            <ul>
+              <li>Clarify your goals and context</li>
+              <li>Decide session format (in‑person / virtual / hybrid)</li>
+              <li>Confirm pricing and timeline</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footgrid">
+      <div>
+        <strong>TCAL</strong> — Team Consultation for Accountable Leadership<br />
+        © <span id="year"></span> TCAL. All rights reserved.
+      </div>
+      <div>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Accessibility‑friendly form handling with a no‑backend default.
+    (function(){
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('form-status');
+      const endpoint = null; // Set to your Formspree (or similar) endpoint string to enable AJAX submit.
+
+      function encodeForm(data){
+        return Object.keys(data).map(k=>encodeURIComponent(k)+'='+encodeURIComponent(data[k])).join('&');
+      }
+
+      form.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        status.textContent = '';
+
+        const fd = new FormData(form);
+        const data = Object.fromEntries(fd.entries());
+
+        // Basic validation
+        const required = ['firstName','lastName','email','message'];
+        for (const key of required){
+          if(!data[key] || (key==='email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data[key]))){
+            status.textContent = 'Please complete all required fields with a valid email.';
+            return;
+          }
+        }
+
+        if (endpoint){
+          try{
+            status.textContent = 'Sending…';
+            const res = await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+            if(res.ok){
+              status.textContent = 'Thanks! Your message has been sent.';
+              form.reset();
+            } else {
+              status.textContent = 'There was an issue sending your message. Please email tcalorggrowth@gmail.com directly.';
+            }
+          }catch(err){
+            status.textContent = 'Network error. Please email tcalorggrowth@gmail.com directly.';
+          }
+        } else {
+          // Fallback: open the user’s email client with a prefilled message
+          const subject = 'TCAL Inquiry from '+data.firstName+' '+data.lastName;
+          const body = `Name: ${data.firstName} ${data.lastName}%0ACompany: ${data.company||''}%0AEmail: ${data.email}%0A%0A${encodeURIComponent(data.message)}`;
+          window.location.href = `mailto:tcalorggrowth@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+          status.textContent = 'Opening your email client… If it didn\'t open, email tcalorggrowth@gmail.com.';
+        }
+      });
+
+      // Current year in footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
