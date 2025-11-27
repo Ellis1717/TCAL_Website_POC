@@ -10,7 +10,7 @@
   <meta property="og:description" content="Adaptable framework for consistent leadership. Team consultations, individual coaching, and full‑day workshops." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://example.com/" />
-  <meta property="og:image" content="https://example.com/assets/og-image.png" />
+  <meta property="og:image" content="https://example.com/assets/TCAL_Logo_Full_Name.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="TCAL • Team Consultation for Accountable Leadership" />
   <meta name="twitter:description" content="Adaptable framework for consistent leadership. Team consultations, individual coaching, and full‑day workshops." />
@@ -75,9 +75,13 @@
     .kicker{display:inline-block;font-size:.9rem;font-weight:700;color:var(--brand);letter-spacing:.04em}
     .problems-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
     .problem-card{background:#fff;border:1px solid #e5e7eb;border-radius:1rem;padding:1.1rem}
+    .problem-card img{display:block;margin-bottom:.75rem;width:40px;height:40px}
     .problem-card h3{margin:.1rem 0;color:#0f172a}
     .problem-card p{margin:0;color:#475569}
     .about-grid{align-items:start}
+    .about-images{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;margin-top:1.75rem}
+    .about-images img{width:100%;height:auto;border-radius:1rem;object-fit:cover}
+    @media (max-width:860px){.about-images{grid-template-columns:1fr}}
     .cred-list{margin:0;padding-left:1.25rem;color:#475569}
     .cred-list li{margin:.4rem 0}
     .highlight{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #e5e7eb;padding:.35rem .6rem;border-radius:999px;margin-top:.75rem;font-weight:600;color:#0f766e;background:#f0fdfa}
@@ -197,19 +201,23 @@
         <h2>Move your leadership team from intention to accountable action</h2>
         <div class="problems-grid">
           <article class="problem-card">
+            <img src="assets/icon-structure.svg" alt="" width="40" height="40" />
             <h3>Culture feels inconsistent</h3>
             <p>Departments interpret values differently, producing uneven staff experiences and missed service targets.</p>
           </article>
           <article class="problem-card">
+            <img src="assets/icon-target.svg" alt="" width="40" height="40" />
             <h3>Supervision is reactive</h3>
             <p>Managers spend time on crisis issues instead of coaching, creating burnout and turnover.</p>
           </article>
           <article class="problem-card">
+            <img src="assets/icon-checklist.svg" alt="" width="40" height="40" />
             <h3>Expectations are unclear</h3>
             <p>Teams want accountability, yet there is no shared cadence or language to reinforce it.</p>
           </article>
           <article class="problem-card">
-            <h3>Succession isn’t ready</h3>
+            <img src="assets/icon-team.svg" alt="" width="40" height="40" />
+            <h3>Succession isn't ready</h3>
             <p>Emerging leaders lack a plan to step into roles, slowing decisions and growth.</p>
           </article>
         </div>
@@ -236,6 +244,10 @@
             </ul>
             <span class="highlight">Awarded for excellence in leadership accountability coaching</span>
           </aside>
+        </div>
+        <div class="about-images">
+          <img src="assets/TCAL_group_image_1.png" alt="Leadership workshop session with team participants" />
+          <img src="assets/TCAL_group_image_2.png" alt="Team collaboration and accountability session" />
         </div>
       </div>
     </section>
