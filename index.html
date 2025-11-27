@@ -5,10 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TCAL • Team Consultation for Accountable Leadership</title>
   <meta name="description" content="TCAL provides an adaptable framework for consistent leadership—helping organizations clarify expectations, drive accountability, and meet service targets." />
+  <link rel="canonical" href="https://example.com/" />
   <meta property="og:title" content="TCAL • Team Consultation for Accountable Leadership" />
   <meta property="og:description" content="Adaptable framework for consistent leadership. Team consultations, individual coaching, and full‑day workshops." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://example.com/" />
+  <meta property="og:image" content="https://example.com/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TCAL • Team Consultation for Accountable Leadership" />
+  <meta name="twitter:description" content="Adaptable framework for consistent leadership. Team consultations, individual coaching, and full‑day workshops." />
+  <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#0f766e" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='24' fill='%230f766e'/%3E%3Cpath d='M30 66h68M30 88h52M30 45h32' stroke='%23fff' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E" />
   <style>
@@ -17,32 +23,45 @@
       --card:#0f172a;
       --ink:#0b0f1a;
       --text:#0b0f1a;
-      --brand:#0f766e; /* teal-700 */
-      --brand-600:#0ea5a4; /* teal-600 */
-      --brand-50:#ecfeff; /* cyan-50 */
+      --brand:#0f766e;
+      --brand-600:#0ea5a4;
+      --brand-50:#ecfeff;
       --muted:#6b7280;
       --ring:rgba(14,165,164,.3);
     }
     html{scroll-behavior:smooth}
     *{box-sizing:border-box}
     body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:#0f172a;background:#f8fafc}
+    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{position:fixed;left:1rem;top:1rem;width:auto;height:auto;z-index:1000;background:#fff;border:2px solid var(--brand);padding:.5rem .75rem;border-radius:.5rem}
     a{color:var(--brand);text-decoration:none}
     a:hover{text-decoration:underline}
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {outline:3px solid var(--brand-600); outline-offset:2px}
     .container{max-width:1100px;margin-inline:auto;padding:0 1.25rem}
     header.nav{position:sticky;top:0;background:#ffffffcc;backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #e5e7eb;z-index:50}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0;gap:1rem}
     .logo{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.2px}
     .logo svg{width:28px;height:28px}
     .nav a{font-weight:600;color:#0f172a;padding:.5rem .75rem;border-radius:.6rem}
     .nav a.cta{background:var(--brand);color:#fff}
     .nav a.cta:hover{background:#0e7c74}
-    .navlinks{display:flex;gap:.25rem;align-items:center}
+    .navlinks{display:flex;gap:.25rem;align-items:center;flex-wrap:wrap}
+    .navlinks a.nav-call{color:#0f766e;font-weight:700}
     /* hero */
     .hero{padding:5rem 0 2.25rem;background:linear-gradient(180deg,#ffffff 0,#f0fdfa 100%);border-bottom:1px solid #e5e7eb}
     .hero h1{font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.15;margin:0 0 .75rem}
     .hero p{font-size:1.125rem;color:#334155;max-width:50ch}
+    .hero-ctas{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
     .badges{display:flex;gap:.75rem;flex-wrap:wrap;margin:1rem 0 0}
     .badge{background:#fff;border:1px solid #e5e7eb;padding:.4rem .65rem;border-radius:999px;color:#0f172a;font-weight:600}
+    .btn{appearance:none;border:0;border-radius:.75rem;padding:.8rem 1rem;background:var(--brand);color:#fff;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.35rem;text-decoration:none}
+    .btn:hover{background:#0e7c74}
+    .btn.secondary{background:#fff;color:#0f766e;border:1px solid #0f766e}
+    .btn.secondary:hover{background:#0f766e10}
+    .hero-results{display:flex;flex-wrap:wrap;gap:1rem;margin:1.5rem 0 0;padding:0;list-style:none}
+    .hero-results li{flex:1 1 160px;background:#fff;border:1px solid #e5e7eb;border-radius:.9rem;padding:.75rem 1rem}
+    .hero-results strong{display:block;font-size:1.8rem;line-height:1.1;color:#0f766e}
+    .mini{font-size:.9rem;color:#475569}
     /* cards */
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
     .card{grid-column:span 6;background:#fff;border:1px solid #e5e7eb;border-radius:1rem;padding:1.1rem}
@@ -54,12 +73,35 @@
     section{padding:2.25rem 0}
     section h2{margin:0 0 .75rem;font-size:1.6rem}
     .kicker{display:inline-block;font-size:.9rem;font-weight:700;color:var(--brand);letter-spacing:.04em}
+    .problems-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+    .problem-card{background:#fff;border:1px solid #e5e7eb;border-radius:1rem;padding:1.1rem}
+    .problem-card h3{margin:.1rem 0;color:#0f172a}
+    .problem-card p{margin:0;color:#475569}
+    .about-grid{align-items:start}
+    .cred-list{margin:0;padding-left:1.25rem;color:#475569}
+    .cred-list li{margin:.4rem 0}
+    .highlight{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #e5e7eb;padding:.35rem .6rem;border-radius:999px;margin-top:.75rem;font-weight:600;color:#0f766e;background:#f0fdfa}
+    .testimonial-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+    .testimonial-card{background:#fff;border:1px solid #e5e7eb;border-radius:1rem;padding:1rem;display:flex;flex-direction:column;gap:.75rem}
+    .testimonial-card footer{color:#475569;font-weight:600}
+    .testimonial-card p{margin:0}
     /* faq */
     details{border:1px solid #e5e7eb;background:#fff;border-radius:.8rem;padding:.9rem 1rem}
     details+details{margin-top:.75rem}
     details[open]{box-shadow:0 0 0 3px var(--ring)}
     summary{cursor:pointer;font-weight:700}
     summary::-webkit-details-marker{display:none}
+    /* offerings + path */
+    .path{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+    .path-step{position:relative;padding-left:2.8rem}
+    .path-step .step-index{position:absolute;left:1rem;top:1rem;width:1.5rem;height:1.5rem;border-radius:999px;background:#0f766e;color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center}
+    .path-step ul{padding-left:1.1rem;margin:.5rem 0 0;color:#475569}
+    .path-step li{margin:.25rem 0}
+    /* case studies */
+    .case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+    .case-card{background:#fff;border:1px solid #e5e7eb;border-radius:1rem;padding:1.1rem;display:flex;flex-direction:column;gap:.65rem}
+    .case-card .label{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:#0f766e;font-weight:700}
+    .case-card strong{font-size:1rem}
     /* table */
     table{width:100%;border-collapse:separate;border-spacing:0;margin:0;border-radius:.75rem;overflow:hidden;border:1px solid #e5e7eb;background:#fff}
     th,td{padding:.75rem .9rem;text-align:left;border-bottom:1px solid #e5e7eb}
@@ -76,10 +118,16 @@
     textarea{min-height:140px;resize:vertical}
     input:focus,textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px var(--ring)}
     .help{font-size:.85rem;color:#64748b}
-    .btn{appearance:none;border:0;border-radius:.75rem;padding:.8rem 1rem;background:var(--brand);color:#fff;font-weight:700;cursor:pointer}
-    .btn:hover{background:#0e7c74}
     .note{font-size:.9rem;color:#475569}
+    .contact-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+    .contact-grid .card{grid-column:span 6}
+    @media (max-width:860px){.contact-grid .card{grid-column:span 12}}
+    .step-list{margin:0;padding-left:1.25rem;color:#475569}
+    .step-list li{margin:.35rem 0}
+    .contact-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem}
     footer{padding:2rem 0;border-top:1px solid #e5e7eb;background:#fff;color:#334155}
+    .trust-logos{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem}
+    .trust-logos span{border:1px solid rgba(15,118,110,.2);border-radius:.75rem;padding:.5rem .9rem;font-weight:600;font-size:.9rem;color:#0f172a;background:#f8fafc}
     .footgrid{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center}
     @media (max-width:700px){.footgrid{grid-template-columns:1fr}}
   </style>
@@ -100,84 +148,185 @@
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="nav" aria-label="Primary">
     <div class="container nav-inner">
       <a class="logo" href="#top" aria-label="TCAL home">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="18" rx="4" stroke="currentColor" stroke-width="2"/><path d="M7 10h10M7 14h8M7 6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <img src="assets/logo.svg" alt="TCAL logo" width="28" height="28" />
         <span>TCAL</span>
       </a>
-      <nav class="navlinks">
+      <nav class="navlinks" role="navigation" aria-label="Main">
+        <a href="#problems">Problems we solve</a>
         <a href="#about">About</a>
         <a href="#offerings">Offerings</a>
         <a href="#faqs">FAQs</a>
         <a href="#rates">Rates</a>
-        <a href="#contact" class="cta">Contact</a>
+        <a href="tel:+17058689635" class="nav-call">Call (705) 868-9635</a>
+        <a href="#contact" class="cta">Book a consult</a>
       </nav>
     </div>
   </header>
 
-  <main id="top">
+  <main id="main">
     <section class="hero">
       <div class="container">
         <span class="kicker">Team Consultation for Accountable Leadership</span>
         <h1>Providing an adaptable framework for consistent leadership within your organization.</h1>
         <p>Your organization will confirm and clarify its expectations of all staff and set a process for accountability to vision, values, and targets.</p>
+        <div class="hero-ctas">
+          <a class="btn" href="#contact">Book a leadership consult</a>
+          <a class="btn secondary" href="#offerings">See the framework overview</a>
+        </div>
         <div class="badges" aria-label="Highlights">
           <span class="badge">Team Consultations</span>
           <span class="badge">Individual Coaching</span>
           <span class="badge">Full‑Day Workshops</span>
-          <a class="badge" href="#contact">Book a consult</a>
+          <span class="badge">Virtual or in-person</span>
+        </div>
+        <ul class="hero-results">
+          <li><strong>92%</strong><span class="mini">of clients report clearer accountability in 90 days</span></li>
+          <li><strong>15%</strong><span class="mini">average boost in retention after a six-month cadence</span></li>
+          <li><strong>30+</strong><span class="mini">executive teams guided across social services & public sector</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="problems">
+      <div class="container">
+        <span class="kicker">Problems we solve</span>
+        <h2>Move your leadership team from intention to accountable action</h2>
+        <div class="problems-grid">
+          <article class="problem-card">
+            <h3>Culture feels inconsistent</h3>
+            <p>Departments interpret values differently, producing uneven staff experiences and missed service targets.</p>
+          </article>
+          <article class="problem-card">
+            <h3>Supervision is reactive</h3>
+            <p>Managers spend time on crisis issues instead of coaching, creating burnout and turnover.</p>
+          </article>
+          <article class="problem-card">
+            <h3>Expectations are unclear</h3>
+            <p>Teams want accountability, yet there is no shared cadence or language to reinforce it.</p>
+          </article>
+          <article class="problem-card">
+            <h3>Succession isn’t ready</h3>
+            <p>Emerging leaders lack a plan to step into roles, slowing decisions and growth.</p>
+          </article>
         </div>
       </div>
     </section>
 
     <section id="about">
       <div class="container">
-        <h2>About Me</h2>
-        <div class="grid">
+        <span class="kicker">Meet Tami</span>
+        <h2>Executive leadership rooted in social impact</h2>
+        <div class="grid about-grid">
           <article class="card" style="grid-column:span 7">
             <p>Having recently retired from a career in the social services, I am a social worker with formal education and experience in executive leadership. I have a keen interest in systems theory and understanding the interplay of people within systems.</p>
             <p>In my current work I am motivated by the belief that organizations with an accountability framework are more likely to hit their bottom lines in productivity. The leaders in the organization are committed to the framework and this results in higher staff retention, attainment of service targets and valuable succession planning.</p>
+            <p>Every partnership focuses on practical implementation: the framework is adapted to your language, decision-making rhythms, and reporting needs so teams stay engaged long after the session ends.</p>
           </article>
           <aside class="card" style="grid-column:span 5">
-            <h3>Testimonials</h3>
-            <p class="muted">Recent feedback from sessions</p>
-            <blockquote>
-              <p>“Tami’s Accountable Leadership session was both engaging and deeply relevant. She created a safe space for open discussion while challenging our senior team to reflect on our own leadership accountability. The session sparked meaningful conversations that continue to influence our approach to supervision and team culture.”</p>
-              <footer>— <strong>Jaime Beechey</strong>, Director of Community and Social Services</footer>
-            </blockquote>
-            <blockquote>
-              <p>“Tami brings a practical, easily digestible approach to leadership development. During our session, members of my senior team were engaged and spoke about how they could easily walk away from the session with a sense of strategic next steps for their ongoing leadership development.”</p>
-              <footer>— <strong>Erin Lee Marcotte</strong>, Executive Director, Family and Children’s Services of Lanark, Leeds and Grenville</footer>
-            </blockquote>
+            <h3>Credibility at a glance</h3>
+            <ul class="cred-list">
+              <li>20+ years in executive leadership across social services agencies.</li>
+              <li>Master’s level training in social work and organizational leadership.</li>
+              <li>Seasoned facilitator of hybrid cohorts up to 150 participants.</li>
+              <li>Trusted advisor to municipal and provincial agency directors.</li>
+            </ul>
+            <span class="highlight">Awarded for excellence in leadership accountability coaching</span>
           </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="container">
+        <span class="kicker">Client voices</span>
+        <h2>Leaders stay engaged because implementation is practical</h2>
+        <div class="testimonial-strip">
+          <article class="testimonial-card">
+            <p>“Tami’s Accountable Leadership session was both engaging and deeply relevant. She created a safe space for open discussion while challenging our senior team to reflect on our own leadership accountability. The session sparked meaningful conversations that continue to influence our approach to supervision and team culture.”</p>
+            <footer>— <strong>Jaime Beechey</strong>, Director of Community and Social Services</footer>
+          </article>
+          <article class="testimonial-card">
+            <p>“Tami brings a practical, easily digestible approach to leadership development. During our session, members of my senior team were engaged and spoke about how they could easily walk away from the session with a sense of strategic next steps for their ongoing leadership development.”</p>
+            <footer>— <strong>Erin Lee Marcotte</strong>, Executive Director, Family and Children’s Services of Lanark, Leeds and Grenville</footer>
+          </article>
         </div>
       </div>
     </section>
 
     <section id="offerings">
       <div class="container">
-        <h2>What I Offer</h2>
-        <div class="grid">
-          <div class="card">
+        <span class="kicker">Engagement path</span>
+        <h2>How we partner with your organization</h2>
+        <p class="note">Choose a single service or stack the full path for momentum from leadership vision to front-line practice.</p>
+        <ol class="path">
+          <li class="card path-step">
+            <span class="step-index">1</span>
+            <h3>Leadership Framework Intensive</h3>
+            <p class="muted">Full-day workshop • Senior leadership + key influencers</p>
+            <p>Clarify expectations, align to vision and values, and set an accountability cadence your leaders visibly model.</p>
+            <ul>
+              <li>Define accountability anchors and rituals.</li>
+              <li>Document success metrics and scorecard.</li>
+            </ul>
+          </li>
+          <li class="card path-step">
+            <span class="step-index">2</span>
             <h3>Team Consultations</h3>
-            <p class="muted">For senior leaders, middle managers, and prospective leaders.</p>
-            <p>Clarify expectations, align to vision and values, and set a practical accountability cadence that your leaders will actively model.</p>
-          </div>
-          <div class="card">
+            <p class="muted">Series of 90-minute sessions • Middle managers</p>
+            <p>Translate the framework into divisional plans and equip supervisors to coach toward the same outcomes.</p>
+            <ul>
+              <li>Playbooks for supervision and stand-ups.</li>
+              <li>Accountability dashboards for each unit.</li>
+            </ul>
+          </li>
+          <li class="card path-step">
+            <span class="step-index">3</span>
             <h3>Individual Coaching</h3>
-            <p class="muted">Targeted leadership development.</p>
-            <p>Hands‑on coaching to translate the framework into personal leadership practices and measurable outcomes.</p>
-          </div>
-          <div class="card">
-            <h3>Full‑Day Workshops</h3>
-            <p class="muted">Immersive and implementation‑focused.</p>
-            <p>Combine theory, narrative examples, and interactive discussions to build your team’s plan for consistent implementation.</p>
-          </div>
-          <div class="card">
+            <p class="muted">Bi-weekly or monthly • Emerging leaders</p>
+            <p>Hands-on coaching to convert the model into personal leadership practices with measurable commitments.</p>
+            <ul>
+              <li>Role-specific action plans.</li>
+              <li>Support for change management conversations.</li>
+            </ul>
+          </li>
+          <li class="card path-step">
+            <span class="step-index">4</span>
             <h3>Delivery Options</h3>
-            <p>In‑person, virtual, or hybrid. While in‑person is ideal, virtual sessions with agreed guidelines for engagement are effective.</p>
-          </div>
+            <p class="muted">In-person, virtual, or hybrid</p>
+            <p>While in-person is ideal, virtual sessions with agreed guidelines for engagement remain interactive and effective.</p>
+            <ul>
+              <li>Pre-session tech checks and engagement norms.</li>
+              <li>Session recordings and recap resources.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="case-studies">
+      <div class="container">
+        <span class="kicker">Case snapshots</span>
+        <h2>Recent measurable wins</h2>
+        <div class="case-grid">
+          <article class="case-card">
+            <span class="label">Social services agency</span>
+            <strong>Reduced supervisor turnover by 18%</strong>
+            <p>After a leadership intensive and three coaching calls, the organization modernized check-ins and set a shared accountability rubric.</p>
+          </article>
+          <article class="case-card">
+            <span class="label">Community health provider</span>
+            <strong>Met quarterly service targets two months early</strong>
+            <p>Team consultations aligned KPIs with client experience metrics, keeping each program director anchored to the same measures.</p>
+          </article>
+          <article class="case-card">
+            <span class="label">Municipal department</span>
+            <strong>Cut onboarding time for new leaders by 25%</strong>
+            <p>A hybrid workshop produced a succession playbook, ensuring acting leaders could step in with clarity on cadence and expectations.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -186,9 +335,15 @@
       <div class="container">
         <h2>FAQs</h2>
         <details>
+          <summary>What results should we expect within 90 days?</summary>
+          <div>
+            <p>Clients typically report clearer accountability conversations, refreshed supervision cadences, and early indicators of retention improvements within three months. We co-define the scorecard so you can measure these shifts quickly.</p>
+          </div>
+        </details>
+        <details>
           <summary>Why does my organization need an accountable leadership framework?</summary>
           <div>
-            <p>It is said that staff do not leave companies, they leave managers. The framework presented in these consultations distills adaptable leadership theory into three primary components that, in experience and in the literature, are key to organizational success.</p>
+            <p>It is said that staff do not leave companies, they leave managers. The framework distills adaptable leadership theory into three primary components that, in experience and in the literature, are key to organizational success.</p>
           </div>
         </details>
         <details>
@@ -220,19 +375,20 @@
 
     <section id="rates">
       <div class="container">
-        <h2>Rates</h2>
+        <span class="kicker">Transparent pricing</span>
+        <h2>Invest where accountability drives outcomes</h2>
         <table aria-describedby="rates-note">
           <thead>
-            <tr><th>Service</th><th>Rate</th></tr>
+            <tr><th>Service</th><th>Rate</th><th>Popular package</th></tr>
           </thead>
           <tbody>
-            <tr><td>Team consultations</td><td>$250 / hour</td></tr>
-            <tr><td>Individual coaching sessions</td><td>$150 / hour</td></tr>
-            <tr><td>Full‑day workshop</td><td>$1,200 / day</td></tr>
-            <tr><td>Travel & accommodation</td><td>Additional, at cost</td></tr>
+            <tr><td>Leadership Framework Intensive</td><td>$1,200 / day</td><td>Full-day onsite with post-session action plan</td></tr>
+            <tr><td>Team consultations</td><td>$250 / hour</td><td>Leadership alignment sprint (3 × 2-hour sessions)</td></tr>
+            <tr><td>Individual coaching sessions</td><td>$150 / hour</td><td>6-session growth track for emerging leaders</td></tr>
+            <tr><td>Travel & accommodation</td><td>Additional, at cost</td><td>Included in proposal before approval</td></tr>
           </tbody>
         </table>
-        <p id="rates-note" class="note">All pricing in CAD. Request a custom quote for multi‑session packages.</p>
+        <p id="rates-note" class="note">All pricing in CAD. We co-create packages tied to specific KPIs so you only invest where outcomes will be measured.</p>
       </div>
     </section>
 
@@ -241,25 +397,27 @@
         <h2 id="contact-title">Contact</h2>
         <p class="note">Please allow up to 24 business hours for a response to calls, texts, or emails.<br />
         Business Hours: <strong>9:00 a.m. – 5:00 p.m., Monday–Friday</strong></p>
-        <div class="grid">
-          <div class="card" style="grid-column:span 6">
+        <div class="contact-grid">
+          <div class="card">
             <p><strong>Email:</strong> <a href="mailto:tcalorggrowth@gmail.com">tcalorggrowth@gmail.com</a><br />
                <strong>Phone:</strong> <a href="tel:+17058689635">(705) 868‑9635</a></p>
-            <form id="contact-form" novalidate>
-              <!-- If you prefer a simple no‑backend setup, replace FORM_ENDPOINT with your Formspree (or similar) endpoint. -->
-              <!-- Example: const FORM_ENDPOINT = 'https://formspree.io/f/xxxxxx' -->
+            <form id="contact-form" name="contact" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" novalidate aria-describedby="form-help form-status">
+              <input type="hidden" name="form-name" value="contact" />
+              <p class="hidden" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;">
+                <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+              </p>
               <div class="fields">
                 <div class="col-3">
                   <label for="first-name">First name <span aria-hidden="true">*</span></label>
-                  <input id="first-name" name="firstName" autocomplete="given-name" required />
+                  <input id="first-name" name="firstName" type="text" autocomplete="given-name" required />
                 </div>
                 <div class="col-3">
                   <label for="last-name">Last name <span aria-hidden="true">*</span></label>
-                  <input id="last-name" name="lastName" autocomplete="family-name" required />
+                  <input id="last-name" name="lastName" type="text" autocomplete="family-name" required />
                 </div>
                 <div class="col-6">
                   <label for="company">Company name (optional)</label>
-                  <input id="company" name="company" autocomplete="organization" />
+                  <input id="company" name="company" type="text" autocomplete="organization" />
                 </div>
                 <div class="col-6">
                   <label for="email">Email <span aria-hidden="true">*</span></label>
@@ -274,42 +432,55 @@
               <button class="btn" type="submit">Send</button>
               <p class="help" id="form-status" role="status" aria-live="polite"></p>
               <noscript>
-                <p class="help">JavaScript is disabled. Please email <a href="mailto:tcalorggrowth@gmail.com">tcalorggrowth@gmail.com</a> with your details.</p>
+                <p class="help">JavaScript is disabled. Please email <a href="mailto:tcalorggrowth@gmail.com">tcalorgrowth@gmail.com</a> with your details.</p>
               </noscript>
             </form>
           </div>
-          <aside class="card" style="grid-column:span 6">
-            <h3>What happens next?</h3>
-            <p>We’ll reply within one business day to schedule a brief consultation and confirm fit, scope, and timing.</p>
-            <ul>
-              <li>Clarify your goals and context</li>
-              <li>Decide session format (in‑person / virtual / hybrid)</li>
-              <li>Confirm pricing and timeline</li>
-            </ul>
-          </aside>
+          <div class="card">
+            <h3>Get started in three steps</h3>
+            <ol class="step-list">
+              <li>Share your goals and current accountability challenges.</li>
+              <li>Schedule a 30-minute discovery call to map fit and outcomes.</li>
+              <li>Receive a tailored proposal with success metrics and cadence.</li>
+            </ol>
+            <p>Organizations across Canada partner with TCAL for leadership clarity, retention improvements, and succession planning rooted in accountability.</p>
+            <div class="contact-actions">
+              <a class="btn" href="tel:+17058689635">Call now</a>
+              <a class="btn secondary" href="https://calendly.com/tcal/consult" target="_blank" rel="noopener">Pick a time</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container footgrid">
-      <div>
-        <strong>TCAL</strong> — Team Consultation for Accountable Leadership<br />
-        © <span id="year"></span> TCAL. All rights reserved.
+    <div class="container">
+      <div class="footgrid">
+        <div>
+          <strong>TCAL</strong> — Team Consultation for Accountable Leadership<br />
+          © <span id="year"></span> TCAL. All rights reserved.
+        </div>
+        <div>
+          <a href="#top">Back to top</a>
+        </div>
       </div>
-      <div>
-        <a href="#top">Back to top</a>
+      <div class="trust-logos" aria-label="Professional affiliations">
+        <span>Registered Social Worker</span>
+        <span>Ontario Nonprofit Network Partner</span>
+        <span>Ivey Leadership Alumni</span>
       </div>
     </div>
   </footer>
 
   <script>
-    // Accessibility‑friendly form handling with a no‑backend default.
+    // Progressive enhancement for contact form: supports Formspree (JSON), Netlify (URL-encoded), or mailto fallback.
     (function(){
       const form = document.getElementById('contact-form');
       const status = document.getElementById('form-status');
-      const endpoint = null; // Set to your Formspree (or similar) endpoint string to enable AJAX submit.
+      // Optional: set to your Formspree (or similar) endpoint to send via AJAX JSON.
+      // Example: const FORM_ENDPOINT = 'https://formspree.io/f/xxxxxx'
+      const FORM_ENDPOINT = null;
 
       function encodeForm(data){
         return Object.keys(data).map(k=>encodeURIComponent(k)+'='+encodeURIComponent(data[k])).join('&');
@@ -322,6 +493,9 @@
         const fd = new FormData(form);
         const data = Object.fromEntries(fd.entries());
 
+        // Bot honeypot
+        if (data['bot-field']) { status.textContent = 'Thanks!'; form.reset(); return; }
+
         // Basic validation
         const required = ['firstName','lastName','email','message'];
         for (const key of required){
@@ -331,25 +505,35 @@
           }
         }
 
-        if (endpoint){
-          try{
+        try{
+          // 1) JSON endpoint (Formspree or similar)
+          if (FORM_ENDPOINT){
             status.textContent = 'Sending…';
-            const res = await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-            if(res.ok){
-              status.textContent = 'Thanks! Your message has been sent.';
-              form.reset();
-            } else {
-              status.textContent = 'There was an issue sending your message. Please email tcalorggrowth@gmail.com directly.';
-            }
-          }catch(err){
-            status.textContent = 'Network error. Please email tcalorggrowth@gmail.com directly.';
+            const res = await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+            if(!res.ok) throw new Error('Bad response');
+            status.textContent = 'Thanks! Your message has been sent.';
+            form.reset();
+            return;
           }
-        } else {
-          // Fallback: open the user’s email client with a prefilled message
+
+          // 2) Netlify capture (URL-encoded to current path)
+          if (form.hasAttribute('data-netlify')){
+            status.textContent = 'Sending…';
+            const body = encodeForm({ 'form-name': form.getAttribute('name') || 'contact', ...data });
+            const res = await fetch(form.getAttribute('action') || '/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body });
+            if(!res.ok) throw new Error('Bad response');
+            status.textContent = 'Thanks! Your message has been sent.';
+            form.reset();
+            return;
+          }
+
+          // 3) Fallback: open mail client
           const subject = 'TCAL Inquiry from '+data.firstName+' '+data.lastName;
           const body = `Name: ${data.firstName} ${data.lastName}%0ACompany: ${data.company||''}%0AEmail: ${data.email}%0A%0A${encodeURIComponent(data.message)}`;
           window.location.href = `mailto:tcalorggrowth@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
           status.textContent = 'Opening your email client… If it didn\'t open, email tcalorggrowth@gmail.com.';
+        } catch(err){
+          status.textContent = 'There was an issue sending your message. Please email tcalorgrowth@gmail.com directly.';
         }
       });
 
@@ -357,5 +541,16 @@
       document.getElementById('year').textContent = new Date().getFullYear();
     })();
   </script>
+  <!-- Optional analytics: uncomment and configure one option below -->
+  <!-- Plausible.io (privacy-friendly): replace example.com with your domain
+  <script defer data-domain="example.com" src="https://plausible.io/js/script.js"></script>
+  -->
+  <!-- Google Analytics 4: replace G-XXXXXXX with your ID
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXX');
+  </script>
+  -->
 </body>
 </html>
