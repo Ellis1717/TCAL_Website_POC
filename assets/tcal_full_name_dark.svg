@@ -1,0 +1,22 @@
+<svg width="480" height="180" viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg">
+  <!-- Colors -->
+  <defs>
+    <style>
+      .navy { fill: #0A304E; }
+      .teal { fill: #126E82; }
+      .text { fill: #0A304E; font-family: 'Inter', sans-serif; font-weight: 700; }
+      .subtext { fill: #126E82; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 2px; }
+    </style>
+  </defs>
+
+  <!-- Icon -->
+  <rect x="20" y="40" width="80" height="80" rx="12" class="teal"/>
+  <path d="M20 100 L100 40 L100 100 Z" class="navy"/>
+
+  <!-- TCAL Wordmark -->
+  <text x="130" y="95" font-size="64" class="text">TCAL</text>
+
+  <!-- Tagline -->
+  <text x="130" y="130" font-size="22" class="subtext">TEAM CONSULTATION FOR</text>
+  <text x="130" y="155" font-size="22" class="subtext">ACCOUNTABLE LEADERSHIP</text>
+</svg>
