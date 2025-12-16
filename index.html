@@ -29,74 +29,7 @@
       --muted:#6b7280;
       --ring:rgba(14,165,164,.3);
     }
-    html{scroll-behavior:smooth}
-    *{box-sizing:border-box}
-    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:#0f172a;background:#f8fafc}
-    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip-link:focus{position:fixed;left:1rem;top:1rem;width:auto;height:auto;z-index:1000;background:#fff;border:2px solid var(--brand);padding:.5rem .75rem;border-radius:.5rem}
-    a{color:var(--brand);text-decoration:none}
-    a:hover{text-decoration:underline}
-    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {outline:3px solid var(--brand-600); outline-offset:2px}
-    .container{max-width:1100px;margin-inline:auto;padding:0 1.25rem}
-    header.nav{position:sticky;top:0;background:#ffffffcc;backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #e5e7eb;z-index:50}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0;gap:1rem}
-    .logo{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.2px}
-    .logo svg{width:28px;height:28px}
-    .nav a{font-weight:600;color:#0f172a;padding:.5rem .75rem;border-radius:.6rem}
-    .nav a.cta{background:var(--brand);color:#fff}
-    .nav a.cta:hover{background:#0e7c74}
-    .navlinks{display:flex;gap:.25rem;align-items:center;flex-wrap:wrap}
-    .navlinks a.nav-call{color:#0f766e;font-weight:700}
-    /* hero */
-    .hero{padding:5rem 0 2.25rem;background:linear-gradient(180deg,#ffffff 0,#f0fdfa 100%);border-bottom:1px solid #e5e7eb}
-    .hero h1{font-size:clamp(1.8rem,4.5vw,3rem);line-height:1.15;margin:0 0 .75rem}
-    .hero p{font-size:1.125rem;color:#334155;max-width:50ch}
-    .hero-ctas{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
-    .badges{display:flex;gap:.75rem;flex-wrap:wrap;margin:1rem 0 0}
-    .badge{background:#fff;border:1px solid #e5e7eb;padding:.4rem .65rem;border-radius:999px;color:#0f172a;font-weight:600}
-    .btn{appearance:none;border:0;border-radius:.75rem;padding:.8rem 1rem;background:var(--brand);color:#fff;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.35rem;text-decoration:none}
-    .btn:hover{background:#0e7c74}
-    .btn.secondary{background:#fff;color:#0f766e;border:1px solid #0f766e}
-    .btn.secondary:hover{background:#0f766e10}
-    .hero-results{display:flex;flex-wrap:wrap;gap:1rem;margin:1.5rem 0 0;padding:0;list-style:none}
-    .hero-results li{flex:1 1 160px;background:#fff;border:1px solid #e5e7eb;border-radius:.9rem;padding:.75rem 1rem}
-    .hero-results strong{display:block;font-size:1.8rem;line-height:1.1;color:#0f766e}
-    .mini{font-size:.9rem;color:#475569}
-    /* cards */
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
-    .card{grid-column:span 6;background:#fff;border:1px solid #e5e7eb;border-radius:1rem;padding:1.1rem}
-    .card h3{margin-top:0;margin-bottom:.25rem}
-    .card p{margin:.25rem 0}
-    .card .muted{color:#64748b}
-    @media (max-width:860px){.card{grid-column:span 12}}
-    /* section */
-    section{padding:2.25rem 0}
-    section h2{margin:0 0 .75rem;font-size:1.6rem}
-    .kicker{display:inline-block;font-size:.9rem;font-weight:700;color:var(--brand);letter-spacing:.04em}
-    .problems-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
-    .problem-card{background:#fff;border:1px solid #e5e7eb;border-radius:1rem;padding:1.1rem}
-    .problem-card img{display:block;margin-bottom:.75rem;width:40px;height:40px}
-    .problem-card h3{margin:.1rem 0;color:#0f172a}
-    .problem-card p{margin:0;color:#475569}
-    .about-grid{align-items:start}
-    .about-images{grid-column:1 / -1;display:grid;grid-template-columns:7fr 5fr;gap:1.25rem;margin-top:1.75rem}
-    .about-images picture{width:100%}
-    .about-image img{width:100%;height:100%;border-radius:1rem;object-fit:cover}
-    .about-image--left{aspect-ratio:3/2}
-    .about-image--right{aspect-ratio:1/1}
-    @media (max-width:860px){.about-images{grid-template-columns:1fr} .about-image--left,.about-image--right{aspect-ratio:auto}}
-    .cred-list{margin:0;padding-left:1.25rem;color:#475569}
-    .cred-list li{margin:.4rem 0}
-    .highlight{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #e5e7eb;padding:.35rem .6rem;border-radius:999px;margin-top:.75rem;font-weight:600;color:#0f766e;background:#f0fdfa}
-    .testimonial-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
-    .testimonial-card{background:#fff;border:1px solid #e5e7eb;border-radius:1rem;padding:1rem;display:flex;flex-direction:column;gap:.75rem}
-    .testimonial-card footer{color:#475569;font-weight:600}
-    .testimonial-card p{margin:0}
-    /* faq */
-    details{border:1px solid #e5e7eb;background:#fff;border-radius:.8rem;padding:.9rem 1rem}
-    details+details{margin-top:.75rem}
-    details[open]{box-shadow:0 0 0 3px var(--ring)}
-    summary{cursor:pointer;font-weight:700}
+    /* (script removed — JS now placed before </body> to avoid corrupting CSS) */
     summary::-webkit-details-marker{display:none}
     /* offerings + path */
     .path{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
@@ -119,7 +52,21 @@
     .fields{display:grid;grid-template-columns:repeat(6,1fr);gap:.75rem}
     .fields .col-3{grid-column:span 3}
     .fields .col-6{grid-column:span 6}
-    @media (max-width:860px){.fields .col-3,.fields .col-6{grid-column:span 6}}
+    .fields .col-12{grid-column:span 12}
+    @media (max-width:860px){
+      .fields .col-3,.fields .col-6{grid-column:span 6}
+    }
+    /* Small-screen stacking: collapse the fields grid to a single column for narrow viewports */
+    @media (max-width:600px) {
+      .fields { grid-template-columns: 1fr; gap: .6rem; }
+      .fields .col-3, .fields .col-6, .fields .col-12 { grid-column: span 1; }
+      .contact-form { padding: 1rem; margin: 1.25rem auto; max-width: 92%; }
+      .contact-form .field { margin-bottom: 1rem; }
+      .contact-form input, .contact-form textarea { font-size: 0.98rem; }
+      .contact-form textarea { min-height: 120px; }
+      .btn-primary { width: 100%; padding-left: 0; padding-right: 0; }
+      .contact-grid { gap: .75rem; }
+    }
     label{display:block;font-weight:600;margin:.25rem 0}
     input,textarea{width:100%;padding:.65rem .75rem;border:1px solid #cbd5e1;border-radius:.65rem;font:inherit}
     textarea{min-height:140px;resize:vertical}
@@ -191,6 +138,10 @@
       transform: translateY(-1px);
       box-shadow: 0 10px 28px rgba(31, 75, 216, 0.35);
     }
+    /* Submission overlay (shown after Google Form submit) */
+    #form-overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.5);z-index:9999}
+    #form-overlay .overlay-card{background:#fff;padding:1.25rem 1.5rem;border-radius:12px;max-width:520px;text-align:center;box-shadow:0 12px 40px rgba(2,6,23,0.18)}
+    #form-overlay .overlay-card p{margin:0;font-weight:600}
     .step-list{margin:0;padding-left:1.25rem;color:#475569}
     .step-list li{margin:.35rem 0}
     .contact-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem}
@@ -199,6 +150,26 @@
     .trust-logos span{border:1px solid rgba(15,118,110,.2);border-radius:.75rem;padding:.5rem .9rem;font-weight:600;font-size:.9rem;color:#0f172a;background:#f8fafc}
     .footgrid{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center}
     @media (max-width:700px){.footgrid{grid-template-columns:1fr}}
+    /* Additional layout & visual polish */
+    html{scroll-behavior:smooth}
+    *{box-sizing:border-box}
+    body{margin:0;font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:#0f172a;background:#f8fafc;-webkit-font-smoothing:antialiased}
+    .container{max-width:1100px;margin-inline:auto;padding:0 1.25rem}
+    header.nav{position:sticky;top:0;background:#ffffffcc;backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #e5e7eb;z-index:50}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0;gap:1rem}
+    .logo{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.2px}
+    .logo img{width:34px;height:34px}
+    .navlinks{display:flex;gap:.25rem;align-items:center;flex-wrap:wrap}
+    .navlinks a{font-weight:600;color:#0f172a;padding:.5rem .65rem;border-radius:.6rem}
+    .navlinks a.cta{background:var(--brand);color:#fff}
+    .hero{padding:4.5rem 0 2.25rem;background:linear-gradient(180deg,#ffffff 0,#f0fdfa 100%);border-bottom:1px solid #e5e7eb}
+    .hero h1{font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.12;margin:0 0 .75rem;color:#08393a}
+    .hero p{font-size:1.05rem;color:#334155;max-width:60ch}
+    .btn{appearance:none;border:0;border-radius:.75rem;padding:.7rem 1rem;background:var(--brand);color:#fff;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.35rem;text-decoration:none}
+    .card{background:#fff;border-radius:1rem;padding:1.1rem;box-shadow:0 8px 24px rgba(15,23,42,0.06);border:1px solid rgba(15,23,42,0.04)}
+    .problem-card img{width:40px;height:40px}
+    .problem-card{background:#fff;border-radius:1rem;padding:1.1rem;border:1px solid #eef2f7}
+    @media (max-width:860px){.navlinks{display:none}}
   </style>
   <script type="application/ld+json">
   {
@@ -259,6 +230,15 @@
         </ul>
       </div>
     </section>
+    <section id="contact-thanks" aria-labelledby="contact-thanks-title">
+      <div class="container">
+        <div class="card" role="status" aria-live="polite">
+          <h2 id="contact-thanks-title">Thanks — we received your request</h2>
+          <p class="note">Your submission was received. We will be in touch within 24 business hours. If you need immediate assistance, call <a href="tel:+17058689635">(705) 868‑9635</a>.</p>
+          <p><a class="btn" href="#main">Return to site</a></p>
+        </div>
+      </div>
+    </section>
 
     <section id="problems">
       <div class="container">
@@ -293,19 +273,23 @@
       <div class="container">
         <span class="kicker">Meet Tami</span>
         <h2>Executive leadership rooted in social impact</h2>
+        <div class="grid about-grid" style="gap:1rem;align-items:start;">
           <div class="card">
             <p><strong>Email:</strong> <a href="mailto:tcalorggrowth@gmail.com">tcalorgrowth@gmail.com</a><br />
                <strong>Phone:</strong> <a href="tel:+17058689635">(705) 868‑9635</a></p>
-
-            <!-- Removed inline contact form here; form moved to Contact section below -->
+            <p>Tami designs practical leadership sessions and coaching that produce measurable improvements in supervision quality, retention, and succession readiness. Her approach centers on clear expectations, accountability cadences, and tools leaders can use immediately.</p>
           </div>
-            <p>“Tami’s Accountable Leadership session was both engaging and deeply relevant. She created a safe space for open discussion while challenging our senior team to reflect on our own leadership accountability. The session sparked meaningful conversations that continue to influence our approach to supervision and team culture.”</p>
-            <footer>— <strong>Jaime Beechey</strong>, Director of Community and Social Services</footer>
-          </article>
-          <article class="testimonial-card">
-            <p>“Tami brings a practical, easily digestible approach to leadership development. During our session, members of my senior team were engaged and spoke about how they could easily walk away from the session with a sense of strategic next steps for their ongoing leadership development.”</p>
-            <footer>— <strong>Erin Lee Marcotte</strong>, Executive Director, Family and Children’s Services of Lanark, Leeds and Grenville</footer>
-          </article>
+          <div>
+            <div class="testimonial-card">
+              <p>“Tami’s Accountable Leadership session was both engaging and deeply relevant. She created a safe space for open discussion while challenging our senior team to reflect on our own leadership accountability. The session sparked meaningful conversations that continue to influence our approach to supervision and team culture.”</p>
+              <footer>— <strong>Jaime Beechey</strong>, Director of Community and Social Services</footer>
+            </div>
+            <div style="height:1rem"></div>
+            <div class="testimonial-card">
+              <p>“Tami brings a practical, easily digestible approach to leadership development. During our session, members of my senior team were engaged and spoke about how they could easily walk away from the session with a sense of strategic next steps for their ongoing leadership development.”</p>
+              <footer>— <strong>Erin Lee Marcotte</strong>, Executive Director, Family and Children’s Services of Lanark, Leeds and Grenville</footer>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -331,74 +315,14 @@
             <h3>Team Consultations</h3>
             <p class="muted">Series of 90-minute sessions • Middle managers</p>
             <p>Translate the framework into divisional plans and equip supervisors to coach toward the same outcomes.</p>
-            <ul>
-              <li>Playbooks for supervision and stand-ups.</li>
-              <li>Accountability dashboards for each unit.</li>
-            </ul>
-          </li>
-          <li class="card path-step">
-            <span class="step-index">3</span>
-            <h3>Individual Coaching</h3>
-            <p class="muted">Bi-weekly or monthly • Emerging leaders</p>
-            <p>Hands-on coaching to convert the model into personal leadership practices with measurable commitments.</p>
-            <ul>
-              <li>Role-specific action plans.</li>
-              <li>Support for change management conversations.</li>
-            </ul>
-          </li>
-          <li class="card path-step">
-            <span class="step-index">4</span>
-            <h3>Delivery Options</h3>
-            <p class="muted">In-person, virtual, or hybrid</p>
-            <p>While in-person is ideal, virtual sessions with agreed guidelines for engagement remain interactive and effective.</p>
-            <ul>
-              <li>Pre-session tech checks and engagement norms.</li>
-              <li>Session recordings and recap resources.</li>
-            </ul>
           </li>
         </ol>
-      </div>
-    </section>
-
-    <section id="case-studies">
-      <div class="container">
-        <span class="kicker">Case snapshots</span>
-        <h2>Recent measurable wins</h2>
-        <div class="case-grid">
-          <article class="case-card">
-            <span class="label">Social services agency</span>
-            <strong>Reduced supervisor turnover by 18%</strong>
-            <p>After a leadership intensive and three coaching calls, the organization modernized check-ins and set a shared accountability rubric.</p>
-          </article>
-          <article class="case-card">
-            <span class="label">Community health provider</span>
-            <strong>Met quarterly service targets two months early</strong>
-            <p>Team consultations aligned KPIs with client experience metrics, keeping each program director anchored to the same measures.</p>
-          </article>
-          <article class="case-card">
-            <span class="label">Municipal department</span>
-            <strong>Cut onboarding time for new leaders by 25%</strong>
-            <p>A hybrid workshop produced a succession playbook, ensuring acting leaders could step in with clarity on cadence and expectations.</p>
-          </article>
-        </div>
       </div>
     </section>
 
     <section id="faqs">
       <div class="container">
         <h2>FAQs</h2>
-        <details>
-          <summary>What results should we expect within 90 days?</summary>
-          <div>
-            <p>Clients typically report clearer accountability conversations, refreshed supervision cadences, and early indicators of retention improvements within three months. We co-define the scorecard so you can measure these shifts quickly.</p>
-          </div>
-        </details>
-        <details>
-          <summary>Why does my organization need an accountable leadership framework?</summary>
-          <div>
-            <p>It is said that staff do not leave companies, they leave managers. The framework distills adaptable leadership theory into three primary components that, in experience and in the literature, are key to organizational success.</p>
-          </div>
-        </details>
         <details>
           <summary>Who should attend the session(s)?</summary>
           <div>
@@ -459,6 +383,7 @@
               class="contact-form"
               action="https://docs.google.com/forms/d/e/1FAIpQLSfqa_gVK9YaXufjLwZlsdu1gQ5kyBBMYfDTLcmnYo_Wdl2Ueg/formResponse"
               method="POST"
+              target="_blank"
               aria-describedby="form-help form-status"
             >
               <!-- Name -->

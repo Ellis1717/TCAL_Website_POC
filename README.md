@@ -1,8 +1,9 @@
 # TCAL_Website_POC
 POC website for TCAL - Tami Callahan Small Business Website
 
-Getting Started
-- Open `index.html` in a browser to preview.
+- Getting Started
+- Preview locally
+- Open `index.html` in a browser to preview. For a more accurate local preview use a static server such as `npx serve .` or `npx http-server .`.
 - Brand assets live in `assets/` (logo is `assets/logo.svg`).
 
 Contact Form Options
@@ -23,6 +24,10 @@ Analytics (optional)
 - Choose one snippet in `index.html` and configure:
   - Plausible: replace `teamconsultation.ca` in the data-domain attribute.
   - Google Analytics 4: replace `G-XXXXXXX` with your measurement ID.
+
+Deploy to GitHub Pages
+
+- Push the repository to GitHub and enable Pages in repository settings (choose `main` or `gh-pages` branch). GitHub Pages will serve this static site without any server-side runtime.
 
 Accessibility
 - Skip link, proper labels, focus-visible styles, and ARIA live region are enabled by default.

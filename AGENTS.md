@@ -28,20 +28,19 @@ Store all new media inside assets/.
 
 2. Local Development & Preview
 
-Run a lightweight local server:
+Run a lightweight local server or preview directly in the browser. For development you can use any static-server tool; here are two common options:
 
-Python
+- Node.js (recommended if you have npm):
 
-python3 -m http.server 8080
+	```bash
+	npx serve .
+	# or
+	npx http-server .
+	```
 
+- Directly open `index.html` in your browser for a quick look (features that require an HTTP server, like some fetch/XHR actions or service workers, won't work this way).
 
-Then open: http://localhost:8080/
-
-Node.js (optional)
-
-npx serve .
-# or
-npx http-server .
+Deploy to GitHub Pages by pushing this repository to a branch named `gh-pages` or enabling Pages on the `main` branch in repository settings. GitHub Pages serves static HTML/CSS/JS without requiring Python or a server process on your machine.
 
 3. Form Configuration
 
