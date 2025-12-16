@@ -165,11 +165,14 @@
     .hero{padding:4.5rem 0 2.25rem;background:linear-gradient(180deg,#ffffff 0,#f0fdfa 100%);border-bottom:1px solid #e5e7eb}
     .hero h1{font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.12;margin:0 0 .75rem;color:#08393a}
     .hero p{font-size:1.05rem;color:#334155;max-width:60ch}
+    .hero-visual{margin-top:1.25rem;border-radius:1rem;overflow:hidden}
+    .hero-visual img{width:100%;height:auto;display:block;box-shadow:0 12px 30px rgba(2,6,23,0.08);border-radius:.75rem}
     .btn{appearance:none;border:0;border-radius:.75rem;padding:.7rem 1rem;background:var(--brand);color:#fff;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.35rem;text-decoration:none}
     .card{background:#fff;border-radius:1rem;padding:1.1rem;box-shadow:0 8px 24px rgba(15,23,42,0.06);border:1px solid rgba(15,23,42,0.04)}
     .problem-card img{width:40px;height:40px}
     .problem-card{background:#fff;border-radius:1rem;padding:1.1rem;border:1px solid #eef2f7}
     @media (max-width:860px){.navlinks{display:none}}
+    .about-image img{width:100%;height:auto;border-radius:.65rem;box-shadow:0 10px 28px rgba(2,6,23,0.06);display:block}
   </style>
   <script type="application/ld+json">
   {
@@ -216,6 +219,12 @@
         <div class="hero-ctas">
           <a class="btn" href="#contact">Book a leadership consult</a>
           <a class="btn secondary" href="#offerings">See the framework overview</a>
+        </div>
+        <div class="hero-visual">
+          <picture>
+            <source type="image/webp" srcset="assets/TCAL_group_image_1-480w.webp 480w, assets/TCAL_group_image_1-800w.webp 800w, assets/TCAL_group_image_1-1200w.webp 1200w" sizes="(max-width:600px) 480px, 800px">
+            <img src="assets/TCAL_group_image_1.webp" alt="Workshop participants in discussion" loading="lazy" decoding="async">
+          </picture>
         </div>
         <div class="badges" aria-label="Highlights">
           <span class="badge">Team Consultations</span>
@@ -280,6 +289,12 @@
             <p>Tami designs practical leadership sessions and coaching that produce measurable improvements in supervision quality, retention, and succession readiness. Her approach centers on clear expectations, accountability cadences, and tools leaders can use immediately.</p>
           </div>
           <div>
+            <div class="about-image">
+              <picture>
+                <source type="image/webp" srcset="assets/TCAL_group_image_2-480w.webp 480w, assets/TCAL_group_image_2-800w.webp 800w, assets/TCAL_group_image_2-1024w.webp 1024w" sizes="(max-width:600px) 480px, 600px">
+                <img src="assets/TCAL_group_image_2.webp" alt="Facilitated leadership session" loading="lazy" decoding="async">
+              </picture>
+            </div>
             <div class="testimonial-card">
               <p>“Tami’s Accountable Leadership session was both engaging and deeply relevant. She created a safe space for open discussion while challenging our senior team to reflect on our own leadership accountability. The session sparked meaningful conversations that continue to influence our approach to supervision and team culture.”</p>
               <footer>— <strong>Jaime Beechey</strong>, Director of Community and Social Services</footer>
@@ -386,6 +401,8 @@
               target="_blank"
               aria-describedby="form-help form-status"
             >
+              <!-- Honeypot field to deter bots: real users won't fill this -->
+              <input type="text" name="hp_name" id="hp_name" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" />
               <!-- Name -->
               <div class="fields">
                 <div class="col-6">
@@ -464,22 +481,40 @@
         return Object.keys(data).map(k=>encodeURIComponent(k)+'='+encodeURIComponent(data[k])).join('&');
       }
 
+      // Timestamp to detect very-fast bot submissions
+      const pageLoadTs = Date.now();
+      const MIN_SUBMIT_DELAY = 2000; // ms
+
       form.addEventListener('submit', async (e)=>{
-        // If this form posts to Google Forms, allow the browser to submit natively
-        // (the form uses target="_blank" so the Google confirmation opens in a new tab).
-        // We then redirect the current page to the in-page thank-you anchor.
-        if (form.action && form.action.includes('docs.google.com/forms')) {
-          // give the browser a moment to open the new tab, then navigate current tab
+        const isGoogle = form.action && form.action.includes('docs.google.com/forms');
+        const hpField = form.querySelector('input[name="hp_name"]');
+        const honeypot = hpField ? (hpField.value || '').trim() : '';
+        const elapsed = Date.now() - pageLoadTs;
+
+        // If posting to Google Forms, enforce honeypot + timing checks first.
+        if (isGoogle) {
+          if (honeypot !== '') {
+            e.preventDefault();
+            status.textContent = 'Submission blocked.';
+            return;
+          }
+          if (elapsed < MIN_SUBMIT_DELAY) {
+            e.preventDefault();
+            status.textContent = 'Please complete the form before submitting.';
+            return;
+          }
+          // Checks passed — allow native submit (opens new tab) and redirect current tab after short delay
           setTimeout(()=>{ try{ window.location.hash = '#contact-thanks' }catch(err){} }, 700);
-          return; // do not preventDefault — allow native submit
+          return;
         }
+
         e.preventDefault();
         status.textContent = '';
 
         const fd = new FormData(form);
         const data = Object.fromEntries(fd.entries());
 
-        // Bot honeypot
+        // Bot honeypot (legacy name check)
         if (data['bot-field']) { status.textContent = 'Thanks!'; form.reset(); return; }
 
         // Basic validation
