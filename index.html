@@ -465,6 +465,14 @@
       }
 
       form.addEventListener('submit', async (e)=>{
+        // If this form posts to Google Forms, allow the browser to submit natively
+        // (the form uses target="_blank" so the Google confirmation opens in a new tab).
+        // We then redirect the current page to the in-page thank-you anchor.
+        if (form.action && form.action.includes('docs.google.com/forms')) {
+          // give the browser a moment to open the new tab, then navigate current tab
+          setTimeout(()=>{ try{ window.location.hash = '#contact-thanks' }catch(err){} }, 700);
+          return; // do not preventDefault — allow native submit
+        }
         e.preventDefault();
         status.textContent = '';
 
