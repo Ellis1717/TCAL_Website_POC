@@ -21,7 +21,7 @@ SEO & Social
 
 Analytics (optional)
 - Choose one snippet in `index.html` and configure:
-  - Plausible: replace `example.com` in the data-domain attribute.
+  - Plausible: replace `teamconsultation.ca` in the data-domain attribute.
   - Google Analytics 4: replace `G-XXXXXXX` with your measurement ID.
 
 Accessibility
