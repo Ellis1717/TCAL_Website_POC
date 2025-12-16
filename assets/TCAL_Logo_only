@@ -1,0 +1,43 @@
+<svg
+  width="256"
+  height="256"
+  viewBox="0 0 256 256"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="TCAL Icon"
+>
+  <defs>
+    <linearGradient id="tealGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0FA3A3"/>
+      <stop offset="100%" stop-color="#0B6F7A"/>
+    </linearGradient>
+
+    <linearGradient id="navyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B2E4F"/>
+      <stop offset="100%" stop-color="#081F36"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Main rounded square -->
+  <rect
+    x="16"
+    y="16"
+    width="224"
+    height="224"
+    rx="32"
+    ry="32"
+    fill="url(#tealGradient)"
+  />
+
+  <!-- Diagonal cut -->
+  <polygon
+    points="48,208 208,48 208,208"
+    fill="#FFFFFF"
+  />
+
+  <!-- Bottom-right accent -->
+  <polygon
+    points="112,208 208,112 208,208"
+    fill="url(#navyGradient)"
+  />
+</svg>
