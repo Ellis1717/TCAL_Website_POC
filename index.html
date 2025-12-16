@@ -79,9 +79,12 @@
     .problem-card h3{margin:.1rem 0;color:#0f172a}
     .problem-card p{margin:0;color:#475569}
     .about-grid{align-items:start}
-    .about-images{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;margin-top:1.75rem}
-    .about-images img{width:100%;height:auto;border-radius:1rem;object-fit:cover}
-    @media (max-width:860px){.about-images{grid-template-columns:1fr}}
+    .about-images{grid-column:1 / -1;display:grid;grid-template-columns:7fr 5fr;gap:1.25rem;margin-top:1.75rem}
+    .about-images picture{width:100%}
+    .about-image img{width:100%;height:100%;border-radius:1rem;object-fit:cover}
+    .about-image--left{aspect-ratio:3/2}
+    .about-image--right{aspect-ratio:1/1}
+    @media (max-width:860px){.about-images{grid-template-columns:1fr} .about-image--left,.about-image--right{aspect-ratio:auto}}
     .cred-list{margin:0;padding-left:1.25rem;color:#475569}
     .cred-list li{margin:.4rem 0}
     .highlight{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #e5e7eb;padding:.35rem .6rem;border-radius:999px;margin-top:.75rem;font-weight:600;color:#0f766e;background:#f0fdfa}
@@ -126,6 +129,68 @@
     .contact-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
     .contact-grid .card{grid-column:span 6}
     @media (max-width:860px){.contact-grid .card{grid-column:span 12}}
+    /* Google Forms contact form styles (recommended) */
+    .contact-form {
+      max-width: 640px;
+      margin: 2.5rem auto;
+      padding: 2rem;
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .contact-form .field {
+      margin-bottom: 1.3rem;
+    }
+
+    .contact-form label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .contact-form .required {
+      color: #c0392b;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem 0.85rem;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      font-size: 0.95rem;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #1f4bd8;
+      box-shadow: 0 0 0 2px rgba(31, 75, 216, 0.2);
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .btn-primary {
+      margin-top: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 999px;
+      border: none;
+      font-weight: 600;
+      background: #1f4bd8;
+      color: #ffffff;
+      cursor: pointer;
+      transition: transform 0.08s ease, box-shadow 0.12s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 28px rgba(31, 75, 216, 0.35);
+    }
     .step-list{margin:0;padding-left:1.25rem;color:#475569}
     .step-list li{margin:.35rem 0}
     .contact-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem}
@@ -228,36 +293,12 @@
       <div class="container">
         <span class="kicker">Meet Tami</span>
         <h2>Executive leadership rooted in social impact</h2>
-        <div class="grid about-grid">
-          <article class="card" style="grid-column:span 7">
-            <p>Having recently retired from a career in the social services, I am a social worker with formal education and experience in executive leadership. I have a keen interest in systems theory and understanding the interplay of people within systems.</p>
-            <p>In my current work I am motivated by the belief that organizations with an accountability framework are more likely to hit their bottom lines in productivity. The leaders in the organization are committed to the framework and this results in higher staff retention, attainment of service targets and valuable succession planning.</p>
-            <p>Every partnership focuses on practical implementation: the framework is adapted to your language, decision-making rhythms, and reporting needs so teams stay engaged long after the session ends.</p>
-          </article>
-          <aside class="card" style="grid-column:span 5">
-            <h3>Credibility at a glance</h3>
-            <ul class="cred-list">
-              <li>20+ years in executive leadership across social services agencies.</li>
-              <li>Master’s level training in social work and organizational leadership.</li>
-              <li>Seasoned facilitator of hybrid cohorts up to 150 participants.</li>
-              <li>Trusted advisor to municipal and provincial agency directors.</li>
-            </ul>
-            <span class="highlight">Awarded for excellence in leadership accountability coaching</span>
-          </aside>
-        </div>
-        <div class="about-images">
-          <img loading="lazy" decoding="async" src="assets/TCAL_group_image_1.png" alt="Leadership workshop session with team participants" />
-          <img loading="lazy" decoding="async" src="assets/TCAL_group_image_2.png" alt="Team collaboration and accountability session" />
-        </div>
-      </div>
-    </section>
+          <div class="card">
+            <p><strong>Email:</strong> <a href="mailto:tcalorggrowth@gmail.com">tcalorgrowth@gmail.com</a><br />
+               <strong>Phone:</strong> <a href="tel:+17058689635">(705) 868‑9635</a></p>
 
-    <section id="testimonials">
-      <div class="container">
-        <span class="kicker">Client voices</span>
-        <h2>Leaders stay engaged because implementation is practical</h2>
-        <div class="testimonial-strip">
-          <article class="testimonial-card">
+            <!-- Removed inline contact form here; form moved to Contact section below -->
+          </div>
             <p>“Tami’s Accountable Leadership session was both engaging and deeply relevant. She created a safe space for open discussion while challenging our senior team to reflect on our own leadership accountability. The session sparked meaningful conversations that continue to influence our approach to supervision and team culture.”</p>
             <footer>— <strong>Jaime Beechey</strong>, Director of Community and Social Services</footer>
           </article>
@@ -413,35 +454,35 @@
           <div class="card">
             <p><strong>Email:</strong> <a href="mailto:tcalorggrowth@gmail.com">tcalorggrowth@gmail.com</a><br />
                <strong>Phone:</strong> <a href="tel:+17058689635">(705) 868‑9635</a></p>
-            <form id="contact-form" name="contact" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" novalidate aria-describedby="form-help form-status">
-              <input type="hidden" name="form-name" value="contact" />
-              <p class="hidden" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;">
-                <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
-              </p>
+            <form
+              id="contact-form"
+              class="contact-form"
+              action="https://docs.google.com/forms/d/e/1FAIpQLSfqa_gVK9YaXufjLwZlsdu1gQ5kyBBMYfDTLcmnYo_Wdl2Ueg/formResponse"
+              method="POST"
+              aria-describedby="form-help form-status"
+            >
+              <!-- Name -->
               <div class="fields">
-                <div class="col-3">
-                  <label for="first-name">First name <span aria-hidden="true">*</span></label>
-                  <input id="first-name" name="firstName" type="text" autocomplete="given-name" required />
-                </div>
-                <div class="col-3">
-                  <label for="last-name">Last name <span aria-hidden="true">*</span></label>
-                  <input id="last-name" name="lastName" type="text" autocomplete="family-name" required />
+                <div class="col-6">
+                  <label for="gf-name">Name <span aria-hidden="true">*</span></label>
+                  <input type="text" id="gf-name" name="entry.253214705" required placeholder="First and last name" />
                 </div>
                 <div class="col-6">
-                  <label for="company">Company name (optional)</label>
-                  <input id="company" name="company" type="text" autocomplete="organization" />
+                  <label for="gf-email">Email <span aria-hidden="true">*</span></label>
+                  <input type="email" id="gf-email" name="entry.1192699336" required placeholder="you@example.com" />
                 </div>
-                <div class="col-6">
-                  <label for="email">Email <span aria-hidden="true">*</span></label>
-                  <input id="email" type="email" name="email" autocomplete="email" required />
+                <div class="col-12">
+                  <label for="gf-org">Organization</label>
+                  <input type="text" id="gf-org" name="entry.1397697054" placeholder="Your organization (optional)" />
                 </div>
-                <div class="col-6">
-                  <label for="message">Message <span aria-hidden="true">*</span></label>
-                  <textarea id="message" name="message" required></textarea>
+                <div class="col-12">
+                  <label for="gf-message">Message <span aria-hidden="true">*</span></label>
+                  <textarea id="gf-message" name="entry.1980479514" rows="5" required placeholder="Tell us how we can help…"></textarea>
                 </div>
               </div>
+
               <p class="help" id="form-help">Required fields are marked with an asterisk (*).</p>
-              <button class="btn" type="submit">Send</button>
+              <button class="btn-primary" type="submit">Submit request</button>
               <p class="help" id="form-status" role="status" aria-live="polite"></p>
               <noscript>
                 <p class="help">JavaScript is disabled. Please email <a href="mailto:tcalorggrowth@gmail.com">tcalorgrowth@gmail.com</a> with your details.</p>
