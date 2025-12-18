@@ -511,9 +511,10 @@
   <script>
     // Progressive enhancement for contact form: supports Formspree (JSON), Netlify (URL-encoded), or mailto fallback.
     (function(){
-      // Calendly toggle: set via <body data-calendly="off"> or window.CALENDLY_ENABLED = false
-      let calendlyEnabled = true;
-      if (document.body && document.body.dataset && document.body.dataset.calendly === 'off') calendlyEnabled = false;
+      // Calendly toggle: default OFF to avoid flicker; enable explicitly via
+      // <body data-calendly="on"> or setting window.CALENDLY_ENABLED = true before this script runs.
+      let calendlyEnabled = false;
+      if (document.body && document.body.dataset && document.body.dataset.calendly === 'on') calendlyEnabled = true;
       if (typeof window.CALENDLY_ENABLED !== 'undefined') calendlyEnabled = !!window.CALENDLY_ENABLED;
 
       function updateCalendlyLinks(enabled){
