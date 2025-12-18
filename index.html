@@ -543,8 +543,17 @@
       // expose helper to toggle at runtime
       window.setCalendlyEnabled = function(flag){ calendlyEnabled = !!flag; updateCalendlyLinks(calendlyEnabled); };
 
-      // apply initial state (DOM is ready because script is at end of body)
-      updateCalendlyLinks(calendlyEnabled);
+      // Fetch optional runtime config to allow admins to toggle features without deployments.
+      // Expected JSON format: { "calendly": true }
+      fetch('/assets/site-config.json', { cache: 'no-cache' }).then(res=>{
+        if(!res.ok) throw new Error('no-config');
+        return res.json();
+      }).then(cfg=>{
+        if (cfg && typeof cfg.calendly !== 'undefined') {
+          calendlyEnabled = !!cfg.calendly;
+        }
+      }).catch(()=>{/* ignore - keep existing defaults */})
+      .finally(()=>{ updateCalendlyLinks(calendlyEnabled); });
 
       const form = document.getElementById('contact-form');
       const status = document.getElementById('form-status');
