@@ -181,6 +181,8 @@
     .evidence-panel.active{display:block}
     .evidence-panel h4{margin:0 0 .5rem}
     .evidence-close{display:inline-block;margin-top:.5rem;background:none;border:0;color:#64748b;cursor:pointer}
+    /* Calendly enable/disable styling */
+    .calendly-disabled{opacity:.65;cursor:not-allowed;border-color:rgba(15,118,110,.08);color:#64748b;background:#f1f5f9}
   </style>
   <script type="application/ld+json">
   {
@@ -220,7 +222,6 @@
   <main id="main">
     <section class="hero">
       <div class="container">
-        <span class="kicker">Team Consultation for Accountable Leadership</span>
         <h1>Providing an adaptable framework for consistent leadership within your organization.</h1>
         <p>Your organization will confirm and clarify its expectations of all staff and set a process for accountability to vision, values, and targets.</p>
         <div class="hero-ctas">
@@ -510,6 +511,41 @@
   <script>
     // Progressive enhancement for contact form: supports Formspree (JSON), Netlify (URL-encoded), or mailto fallback.
     (function(){
+      // Calendly toggle: set via <body data-calendly="off"> or window.CALENDLY_ENABLED = false
+      let calendlyEnabled = true;
+      if (document.body && document.body.dataset && document.body.dataset.calendly === 'off') calendlyEnabled = false;
+      if (typeof window.CALENDLY_ENABLED !== 'undefined') calendlyEnabled = !!window.CALENDLY_ENABLED;
+
+      function updateCalendlyLinks(enabled){
+        const els = document.querySelectorAll('a[href*="calendly.com"]');
+        els.forEach(a=>{
+          if(!enabled){
+            if(!a.dataset.href) a.dataset.href = a.href || '';
+            a.removeAttribute('href');
+            a.setAttribute('aria-disabled','true');
+            a.classList.add('calendly-disabled');
+            a.dataset.calendlyDisabled = '1';
+            a.addEventListener('click', preventCalendlyClick);
+            a.title = a.title || 'Calendly is currently disabled';
+          } else {
+            if(a.dataset.href) a.href = a.dataset.href;
+            a.removeAttribute('aria-disabled');
+            a.classList.remove('calendly-disabled');
+            a.removeEventListener('click', preventCalendlyClick);
+            delete a.dataset.calendlyDisabled;
+            a.title = a.title || '';
+          }
+        });
+      }
+
+      function preventCalendlyClick(e){ e.preventDefault(); }
+
+      // expose helper to toggle at runtime
+      window.setCalendlyEnabled = function(flag){ calendlyEnabled = !!flag; updateCalendlyLinks(calendlyEnabled); };
+
+      // apply initial state (DOM is ready because script is at end of body)
+      updateCalendlyLinks(calendlyEnabled);
+
       const form = document.getElementById('contact-form');
       const status = document.getElementById('form-status');
       // Optional: set to your Formspree (or similar) endpoint to send via AJAX JSON.
