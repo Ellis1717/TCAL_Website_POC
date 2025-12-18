@@ -28,6 +28,7 @@
       --brand-50:#ecfeff;
       --muted:#6b7280;
       --ring:rgba(14,165,164,.3);
+      --header-height:64px; /* used to calculate full-viewport hero */
     }
     /* (script removed — JS now placed before </body> to avoid corrupting CSS) */
     summary::-webkit-details-marker{display:none}
@@ -160,6 +161,7 @@
       .container{max-width:1500px;padding:0 2rem}
     }
     header.nav{position:sticky;top:0;background:#ffffffcc;backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #e5e7eb;z-index:50}
+    header.nav{height:var(--header-height)}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.75rem 0;gap:1rem}
     .logo{display:flex;align-items:center;gap:.6rem;font-weight:800;letter-spacing:.2px}
     .logo img{width:34px;height:34px}
@@ -168,6 +170,9 @@
     .navlinks a.cta{background:var(--brand);color:#fff}
     .reveal-phone{background:none;border:0;color:var(--brand);font-weight:700;cursor:pointer;padding:0}
     .hero{padding:4.5rem 0 2.25rem;background:linear-gradient(180deg,#ffffff 0,#f0fdfa 100%);border-bottom:1px solid #e5e7eb}
+    /* Make hero occupy full viewport height (minus header) and center its content */
+    .hero{min-height:calc(100vh - var(--header-height));display:flex;align-items:center}
+    .hero > .container{display:flex;flex-direction:column;justify-content:center;padding-top:1rem;padding-bottom:1rem}
     .hero h1{font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.12;margin:0 0 .75rem;color:#08393a}
     .hero p{font-size:1.05rem;color:#334155;max-width:60ch}
     .hero-visual{margin-top:1.25rem;border-radius:1rem;overflow:hidden}
