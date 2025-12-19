@@ -473,9 +473,10 @@
               class="contact-form"
               action="https://docs.google.com/forms/d/e/1FAIpQLSfqa_gVK9YaXufjLwZlsdu1gQ5kyBBMYfDTLcmnYo_Wdl2Ueg/formResponse"
               method="POST"
-              target="_blank"
+              target="hidden_iframe"
               aria-describedby="form-help form-status"
             >
+              <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" aria-hidden="true"></iframe>
               <!-- Honeypot field to deter bots: real users won't fill this -->
               <input type="text" name="hp_name" id="hp_name" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" />
               <!-- Name -->
@@ -549,6 +550,8 @@
 
       const form = document.getElementById('contact-form');
       const status = document.getElementById('form-status');
+      const hiddenIframe = document.getElementById('hidden_iframe');
+      let submittingToGoogle = false;
       // Optional: set to your Formspree (or similar) endpoint to send via AJAX JSON.
       // Example: const FORM_ENDPOINT = 'https://formspree.io/f/xxxxxx'
       const FORM_ENDPOINT = null;
@@ -579,8 +582,9 @@
             status.textContent = 'Please complete the form before submitting.';
             return;
           }
-          // Checks passed — allow native submit (opens new tab) and redirect current tab after short delay
-          setTimeout(()=>{ try{ window.location.hash = '#contact-thanks' }catch(err){} }, 700);
+          // Checks passed — mark that we're submitting to Google and allow native submit into the hidden iframe
+          submittingToGoogle = true;
+          status.textContent = 'Sending…';
           return;
         }
 
@@ -661,6 +665,16 @@
           });
         });
       })();
+
+      // Listen for the hidden iframe load to detect Google Form response and show a success message.
+      if (hiddenIframe) {
+        hiddenIframe.addEventListener('load', function(){
+          if (!submittingToGoogle) return;
+          submittingToGoogle = false;
+          try{ status.textContent = 'Thanks! Your message has been sent.'; }catch(e){}
+          try{ form.reset(); }catch(e){}
+        });
+      }
 
       // Current year in footer
       document.getElementById('year').textContent = new Date().getFullYear();
