@@ -6,8 +6,8 @@ import pathlib
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 ASSETS = str(ROOT / "assets")
 IMAGES = [
-    "TCAL_group_image_1.png",
     "TCAL_group_image_2.png",
+    "TCAL_group_image_1.png",
 ]
 # widths to generate (px)
 WIDTHS = [480, 800, 1200]
